@@ -7,12 +7,7 @@ import org.springframework.stereotype.Service;
 public class ShippingService {
 
     public double shipment(Order order) {
-        double shipmentTax = 0.0;
-        if (order.getBasic() < 100) {
-            shipmentTax = 20.0;
-        } else if (order.getBasic() <= 200) {
-            shipmentTax = 12;
-        }
+        double shipmentTax = order.getBasic() < 100 ? 20.0 : order.getCode() <= 200 ? 12.0 : 0.0;
         return shipmentTax;
     }
 }
